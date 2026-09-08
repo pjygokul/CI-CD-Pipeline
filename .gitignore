@@ -35,12 +35,17 @@ nosetests.xml
 coverage.xml
 
 # Data Pipeline Artifacts & Cache
+# Data Pipeline Artifacts & Cache
 data/raw/*
+!data/raw/customer_transactions.json
 !data/raw/.gitkeep
+
 data/processed/*
 !data/processed/.gitkeep
+
 data/output/*
 !data/output/.gitkeep
+
 *.parquet
 *.sqlite
 *.duckdb

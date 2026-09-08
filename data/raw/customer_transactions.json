@@ -1,0 +1,74 @@
+[
+  {
+    "transaction_id": "TXN-10001",
+    "customer_id": "CUST-101",
+    "amount": 250.50,
+    "currency": "USD",
+    "timestamp": "2026-03-01T10:15:30Z",
+    "status": "COMPLETED",
+    "item_count": 3
+  },
+  {
+    "transaction_id": "TXN-10002",
+    "customer_id": "CUST-102",
+    "amount": 420.00,
+    "currency": "EUR",
+    "timestamp": "2026-03-01T11:22:45Z",
+    "status": "COMPLETED",
+    "item_count": 2
+  },
+  {
+    "transaction_id": "TXN-10003",
+    "customer_id": "CUST-101",
+    "amount": 1800.00,
+    "currency": "USD",
+    "timestamp": "2026-03-02T09:05:12Z",
+    "status": "COMPLETED",
+    "item_count": 5
+  },
+  {
+    "transaction_id": "TXN-10004",
+    "customer_id": "CUST-103",
+    "amount": 85.00,
+    "currency": "GBP",
+    "timestamp": "2026-03-02T14:40:00Z",
+    "status": "COMPLETED",
+    "item_count": 1
+  },
+  {
+    "transaction_id": "TXN-10005",
+    "customer_id": "CUST-104",
+    "amount": 15000.00,
+    "currency": "INR",
+    "timestamp": "2026-03-03T16:10:00Z",
+    "status": "COMPLETED",
+    "item_count": 4
+  },
+  {
+    "transaction_id": "TXN-10006",
+    "customer_id": "CUST-105",
+    "amount": 3500.00,
+    "currency": "USD",
+    "timestamp": "2026-03-03T18:25:30Z",
+    "status": "COMPLETED",
+    "item_count": 10
+  },
+  {
+    "transaction_id": "TXN-10007",
+    "customer_id": "CUST-102",
+    "amount": 120.00,
+    "currency": "CAD",
+    "timestamp": "2026-03-04T08:50:00Z",
+    "status": "COMPLETED",
+    "item_count": 1
+  },
+  {
+    "transaction_id": "TXN-10008",
+    "customer_id": "CUST-106",
+    "amount": 25.00,
+    "currency": "USD",
+    "timestamp": "2026-03-04T12:00:00Z",
+    "status": "COMPLETED",
+    "item_count": 1
+  }
+]
