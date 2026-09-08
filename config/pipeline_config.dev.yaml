@@ -1,0 +1,41 @@
+environment: dev
+app_name: "CustomerOrderETL"
+version: "1.0.0"
+
+extract:
+  source_type: "local"
+  raw_data_path: "data/raw/customer_transactions.json"
+  s3_bucket: "mock-dev-raw-lakehouse"
+  batch_size: 1000
+
+transform:
+  base_currency: "USD"
+  fx_rates:
+    USD: 1.0
+    EUR: 1.08
+    GBP: 1.27
+    CAD: 0.74
+    INR: 0.012
+  anomaly_std_threshold: 3.0
+  loyalty_tiers:
+    bronze_max: 500
+    silver_max: 2000
+    gold_min: 2000
+
+validation:
+  strict_mode: false
+  max_error_percentage: 10.0
+  required_columns:
+    - transaction_id
+    - customer_id
+    - amount
+    - currency
+    - timestamp
+    - status
+
+load:
+  target_type: "parquet"
+  output_path: "data/output/dev_analytics_orders.parquet"
+  partition_cols:
+    - "transaction_year"
+    - "transaction_month"

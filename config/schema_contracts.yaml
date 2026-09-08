@@ -1,0 +1,42 @@
+# Data Schema Contracts & Quality Expectations
+version: "1.0.0"
+contract_name: "CustomerTransactionContract"
+
+fields:
+  transaction_id:
+    type: "string"
+    nullable: false
+    unique: true
+    regex: "^TXN-[0-9]{5,}$"
+  
+  customer_id:
+    type: "string"
+    nullable: false
+    unique: false
+    regex: "^CUST-[0-9]{3,}$"
+
+  amount:
+    type: "float"
+    nullable: false
+    min_value: 0.01
+    max_value: 1000000.0
+
+  currency:
+    type: "string"
+    nullable: false
+    allowed_values: ["USD", "EUR", "GBP", "CAD", "INR"]
+
+  timestamp:
+    type: "datetime"
+    nullable: false
+
+  status:
+    type: "string"
+    nullable: false
+    allowed_values: ["COMPLETED", "PENDING", "FAILED", "REFUNDED"]
+
+  item_count:
+    type: "integer"
+    nullable: true
+    min_value: 1
+    max_value: 1000
