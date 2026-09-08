@@ -1,6 +1,7 @@
 name: Data Pipeline CI
 
 on:
+  workflow_dispatch:
   push:
     branches:
       - main
