@@ -2,6 +2,7 @@ name: Data Pipeline CD
 
 on:
   workflow_dispatch:
+
   push:
     branches:
       - main
@@ -12,6 +13,7 @@ jobs:
     name: Deploy to Staging Environment
     if: github.ref == 'refs/heads/staging'
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,39 +26,39 @@ jobs:
       - name: Package Pipeline Artifacts
         run: |
           echo "Packaging Data Pipeline Wheel and Configuration..."
+          python -m pip install --upgrade pip
           python -m pip install build
-          python -m build --wheel || echo "Packaging completed"
+          python -m build --wheel
 
       - name: Deploy to Staging Orchestrator
         run: |
           echo "Deploying pipeline definitions to Staging Airflow/Prefect/Lakehouse..."
           echo "Staging deployment successfully completed."
 
-deploy-production:
-  name: Deploy to Production Environment
-  if: github.ref == 'refs/heads/main'
-  runs-on: ubuntu-latest
-  steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+  deploy-production:
+    name: Deploy to Production Environment
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
 
-    - name: Set up Python
-      uses: actions/setup-python@v5
-      with:
-        python-version: "3.11"
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
 
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pyyaml
-        # Or if you have a requirements.txt:
-        # pip install -r requirements.txt
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
 
-    - name: Validate Production Config Contracts
-      run: |
-        python -c "from src.pipeline.config import load_config; load_config('prod')"
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pyyaml
 
-    - name: Deploy to Production Lakehouse
-      run: |
-        echo "Deploying production pipeline DAGs, SQL transformations, and dbt models..."
-        echo "Production deployment successfully completed."
+      - name: Validate Production Config Contracts
+        run: |
+          python -c "from src.pipeline.config import load_config; load_config('prod')"
+
+      - name: Deploy to Production Lakehouse
+        run: |
+          echo "Deploying production pipeline DAGs, SQL transformations, and dbt models..."
+          echo "Production deployment successfully completed."
